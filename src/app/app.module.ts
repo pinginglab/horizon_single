@@ -2,17 +2,59 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {routing} from './app.routing';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyBNcjxo_35qnEG17dQvvftWa68eZWepYE0'
+    // }),
+    // PerfectScrollbarModule,
+    // CalendarModule.forRoot(),
+    // SharedModule,
+    // PipesModule,
+    routing,
+    HttpClientModule,
+    // HttpModule,
+    NgxWebstorageModule.forRoot({ prefix: 'pingsec', separator: '-' }),
+  ],
   declarations: [
     AppComponent,
-    LoginComponent
+    PagesComponent,
+    BlankComponent,
+    SearchComponent,
+    NotFoundComponent,
+    ErrorComponent,
+    TopInfoContentComponent,
+    SidenavComponent,
+    VerticalMenuComponent,
+    HorizontalMenuComponent,
+    FlagsMenuComponent,
+    FullScreenComponent,
+    ApplicationsComponent,
+    MessagesComponent,
+    UserMenuComponent,
+    FavoritesComponent
   ],
-  imports: [
-    BrowserModule
+  providers: [
+    AppSettings,
+    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+    { provide: OverlayContainer, useClass: CustomOverlayContainer },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
+    { provide: LOCALE_ID, useValue: 'zh-Hans' },
+    // { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

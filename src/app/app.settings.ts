@@ -4,7 +4,7 @@ import {Settings} from './app.settings.model';
 @Injectable()
 export class AppSettings {
     public settings = new Settings(
-        '惊奇大雷达',   // theme name
+        'pingsec',   // theme name
         true,       // loadingSpinner
         true,      // fixedHeader
         true,      // fixedSidenav

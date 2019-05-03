@@ -1,0 +1,30 @@
+<mat-sidenav-container class="h-100">
+  <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+    <form [formGroup]="form" (ngSubmit)="login(form.value)" fxFlex="90" fxFlex.gt-sm="30" fxFlex.sm="60" class="mat-elevation-z6">
+      <app-content-header
+        [icon]="'explore'"
+        [title]="'pingsec'"
+        [hideBreadcrumb]="true"
+        [hasBgImage]="true"
+        [class]="'py-4'">
+      </app-content-header>
+      <div class="p-3">
+        <a mat-button routerLink="https://www.cmpassport.com/umc/reg/alias/?from=9" color="accent" class="w-100">没有账号? 立即注册一个吧</a>
+        <mat-form-field class="w-100">
+          <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">account_box</mat-icon>
+          <input matInput placeholder="用户名" formControlName="email">
+          <mat-error *ngIf="form.controls.email.errors?.required">请输入用户名</mat-error>
+          <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">请输入合法的用户名</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+          <input matInput placeholder="密码" formControlName="password" type="password">
+          <mat-error *ngIf="form.controls.password.errors?.required">请输入密码</mat-error>
+          <mat-error *ngIf="form.controls.password.hasError('minlength')">密码位数不够, 请输入完整的密码</mat-error>
+        </mat-form-field>
+        <mat-slide-toggle formControlName="rememberMe" class="my-2" >保持登录</mat-slide-toggle>
+        <button mat-raised-button color="primary" class="mat-elevation-z6 w-100 mt-3" type="submit" [disabled]="!form.valid">登录</button>
+      </div>
+    </form>
+  </div>
+</mat-sidenav-container>

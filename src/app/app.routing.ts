@@ -1,12 +1,12 @@
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-
-import {PagesComponent} from './pages/pages.component';
-import {BlankComponent} from './pages/blank/blank.component';
-import {SearchComponent} from './pages/search/search.component';
-import {NotFoundComponent} from './pages/errors/not-found/not-found.component';
-import {ErrorComponent} from './pages/errors/error/error.component';
 import {AuthGuardService} from './pages/core/auth/auth-guard.service';
+
+// import {PagesComponent} from './pages/pages.component';
+// import {BlankComponent} from './pages/blank/blank.component';
+// import {SearchComponent} from './pages/search/search.component';
+// import {NotFoundComponent} from './pages/errors/not-found/not-found.component';
+// import {ErrorComponent} from './pages/errors/error/error.component';
 
 export const routes: Routes = [
     {
